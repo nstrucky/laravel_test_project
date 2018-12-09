@@ -1,0 +1,52 @@
+body {
+	font-family: 'Karla', sans-serif;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.header-top {
+	display: flex;
+	justify-content: space-between;
+	color: white;
+	font-weight: bold;
+
+}
+
+.header-top a {
+	color: inherit;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+}
+
+a {
+	text-decoration: none;
+	color: #222222;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+nav > a {
+	margin-left: 10px;
+	margin-right: 10px;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, .75);
+
+}
+
+header {
+	background-image: linear-gradient(to right, #66ffd9, #003300);
+}
+
+header h1 {
+	margin-top: 0;
+}
+
