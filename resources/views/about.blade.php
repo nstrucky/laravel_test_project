@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h1>About Page</h1>
+	<h1 class="title is-3">About Page</h1>
 
 	<div>
 		<p>

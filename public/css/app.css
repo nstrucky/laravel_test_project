@@ -29,14 +29,6 @@ nav {
 	justify-content: center;
 }
 
-a {
-	text-decoration: none;
-	color: #222222;
-}
-
-a:hover {
-	text-decoration: underline;
-}
 
 nav > a {
 	margin-left: 10px;

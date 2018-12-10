@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h1>Students</h1>
+	<h1 class="title is-3" >Students</h1>
 	<div>
 		<ul>
 			@foreach($students as $student)
@@ -20,7 +20,8 @@
 
 			@endforeach
 		</ul>
-		<a href="/students/create">Add Student</a>
+
+		<a class="button" href="/students/create">Add Student</a>
 	</div>
 
 

@@ -5,7 +5,7 @@
 
 @section('content')
 
-	<h1>Contacts Page... {{$foobar}}</h1>
+	<h1 class="title is-3">Contacts Page... {{$foobar}}</h1>
 
 
 	<ul>

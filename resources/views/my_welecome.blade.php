@@ -5,7 +5,7 @@
 
 
 @section('content')
-	<h1>{{ $foo }} Home Page!</h1>
+	<h1 class="title is-3">{{ $foo }} Home Page!</h1>
 
 
 	<ul>
