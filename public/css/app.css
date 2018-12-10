@@ -20,6 +20,10 @@ body {
 	color: inherit;
 }
 
+.input-is-danger {
+	border: 2px solid red;
+}
+
 nav {
 	display: flex;
 	justify-content: center;
