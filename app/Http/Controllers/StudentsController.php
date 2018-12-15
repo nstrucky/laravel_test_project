@@ -13,7 +13,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = \App\student::all();
+        $students = \App\Student::all();
         return view('students.index', ['students' => $students]);
     }
 
@@ -43,7 +43,7 @@ class StudentsController extends Controller
         ]);
 
 
-        \App\student::create($validAttrs);
+        \App\Student::create($validAttrs);
         return redirect('/students');
     }
 
@@ -53,9 +53,9 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\student $student/*$id*/)
+    public function show(\App\Student $student/*$id*/)
     {
-        return view('students.student', ['student' => $student]);
+        return view('students.student', ['student' => $student]);   
     }
 
     /**
@@ -64,7 +64,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\student $student/*$id*/)
+    public function edit(\App\Student $student/*$id*/)
     {
         // $student = \App\student::findOrFail($id);
         return view('students.edit', ['student' => $student]);
@@ -77,7 +77,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\student $student)
+    public function update(\App\Student $student)
     {
         // $student = \App\student::find($id);
         // $student->first_name = request('first_name');
@@ -104,7 +104,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\student $student/*$id*/)
+    public function destroy(\App\Student $student/*$id*/)
     {
         $student->delete();
         // \App\student::findOrFail($id)->delete();
