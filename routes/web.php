@@ -23,7 +23,7 @@ Route::get('/', 'PagesController@home');
 Route::get('/contacts', 'PagesController@contacts');
 Route::get('/about', 'PagesController@about');
 
-
+Route::resource('assignments', 'AssignmentsController');
 Route::resource('students','StudentsController');
 // Route::get('/students', 'StudentsController@index');
 // Route::post('/students', 'StudentsController@store');

@@ -55,7 +55,13 @@ class StudentsController extends Controller
      */
     public function show(\App\Student $student/*$id*/)
     {
-        return view('students.student', ['student' => $student]);   
+        $assignments = $student->assignments;
+
+        return view('students.student',[
+            'student' => $student,
+            'assignments' => $assignments
+
+        ]);   
     }
 
     /**

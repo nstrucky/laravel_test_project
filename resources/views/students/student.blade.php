@@ -12,10 +12,29 @@
 
 @section('content')
 
-	<h1>{{$name}}</h1>
+	<h1 class="title is-3">{{$name}}</h1>
 
 	<div>
 		Age: {{$age}} years old		
+	</div>
+
+	<div style="margin: 20px">
+		<div style="display: flex; justify-content: all;">
+			<h1 class="title is-5" style="padding: 5px;">Assignments</h1>
+			
+			<form method="GET" action="/assignments/create">
+				<input type="hidden" name="student_id" value="{{ $id }}">
+				<button type="submit" class="button is-dark">New Assignment</button>
+			</form>
+			{{-- <a href="/assignments/create" class="button is-dark">New Assignment</a> --}}
+		</div>
+
+		<ul>
+			@foreach($assignments as $assignment)
+				<li><a href="/assignments/{{$assignment->id}}">{{$assignment->description}}</a></li>
+			@endforeach
+		</ul>
+
 	</div>
 
 	<form method="GET" action="/students/{{$id}}/edit">
