@@ -29,11 +29,26 @@
 			{{-- <a href="/assignments/create" class="button is-dark">New Assignment</a> --}}
 		</div>
 
-		<ul>
 			@foreach($assignments as $assignment)
-				<li><a href="/assignments/{{$assignment->id}}">{{$assignment->description}}</a></li>
+
+				<div>
+					<form method="POST" action="/assignments/{{$assignment->id}}">
+						{{ csrf_field() }}
+						{{ method_field('PATCH') }}
+
+						<?php $checkcheck = $assignment->complete == 1 ? 'checked' : ''; ?>
+
+						<label class="checkbox {{$checkcheck ? 'completed' : ''}}" for="complete">
+							<input type="checkbox" name="complete" onChange="this.form.submit()" {{$checkcheck}}>
+		
+							<a href="/assignments/{{$assignment->id}}">{{$assignment->description}}</a>
+						</label>
+						
+					</form>
+
+				</div>
+
 			@endforeach
-		</ul>
 
 	</div>
 

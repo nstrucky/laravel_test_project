@@ -80,9 +80,18 @@ class AssignmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(\App\Assignment $assignment)
     {
-        //
+
+        $checked = request()->has('complete');
+
+        $assignment->update([
+            'complete' => $checked ? 1 : 0
+
+        ]);
+
+        // dd(request());
+        return redirect('/students/'.$assignment->student_id);
     }
 
     /**
