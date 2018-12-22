@@ -25,7 +25,6 @@ class AssignmentsController extends Controller
      */
     public function create()
     {
-        //
         return view('/assignments.create');
     }
 
@@ -40,11 +39,12 @@ class AssignmentsController extends Controller
         
         $validAttrs = request()->validate([
             'student_id' => 'required|numeric',
+            'title' => 'required|min:2|max:500',
             'description' => 'required|min:2|max:255',
             'complete' => 'required',
             'status_code' => 'required',
             'due_date' => 'required|date|after_or_equal:today',
-            'score' => 'required'
+            'score' => 'required|numeric|min:0|max:1'
         ]);
 
         \App\Assignment::create($validAttrs);
@@ -61,11 +61,12 @@ class AssignmentsController extends Controller
     public function storeAssignment(Student $student) {
         $validAttrs = request()->validate([
             'student_id' => 'required|numeric',
+            'title' => 'required|min:2|max:500',
             'description' => 'required|min:2|max:255',
             'complete' => 'required',
             'status_code' => 'required',
             'due_date' => 'required|date|after_or_equal:today',
-            'score' => 'required'
+            'score' => 'required|numeric|min:0|max:1'
         ]);
         $student->addAssignment($validAttrs);
         return redirect('/students/'.$student->id);

@@ -12,11 +12,9 @@
 
 @section('content')
 
-	<h1 class="title is-3">{{$name}}</h1>
+	<link rel="stylesheet" type="text/css" href="/css/tables.css">
 
-	<div>
-		Age: {{$age}} years old		
-	</div>
+	<h1 class="title is-3">{{$name}}</h1>
 
 	<div style="margin: 20px">
 		<div style="display: flex; justify-content: all;">
@@ -31,27 +29,50 @@
 
 		<div class="box">
 			
+			<table class="table is-narrow is-fullwidth" id="assignments">
 
-			@foreach($assignments as $assignment)
+				<th>Complete</th>
+				<th>Assignment</th>
+				<th>Status</th>
+				<th>Score</th>
+				<th>Due Date</th>
 
-				<div>
-					<form method="POST" action="/assignments/{{$assignment->id}}">
-						{{ csrf_field() }}
-						{{ method_field('PATCH') }}
+				@foreach($assignments as $assignment)
 
-						<?php $checkcheck = $assignment->complete == 1 ? 'checked' : ''; ?>
+					<?php
+					 	$due_date = $assignment->due_date; 
+					 	$today = date("Y-m-d");
+					 	$past_due = $due_date <= $today;
+					 	$completed = $assignment->complete == 1;
+					?>
 
-						<label class="checkbox {{$checkcheck ? 'completed' : ''}}" for="complete">
-							<input type="checkbox" name="complete" onChange="this.form.submit()" {{$checkcheck}}>
-		
-							<a href="/assignments/{{$assignment->id}}">{{$assignment->description}}</a>
-						</label>
-						
-					</form>
+				<tr class="{{$past_due && !$completed ? 'past-due' : ''}}">
+					<td>
+						<form method="POST" action="/assignments/{{$assignment->id}}">
+							{{ csrf_field() }}
+							{{ method_field('PATCH') }}
 
-				</div>
+							<?php $checkcheck = $assignment->complete == 1 ? 'checked' : ''; ?>
+								<input type="checkbox" name="complete" onChange="this.form.submit()" {{$checkcheck}}>
+												
+						</form>
+					</td>
+					<td>
+						<a class="{{$checkcheck ? 'completed' : ''}}" href="/assignments/{{$assignment->id}}">{{$assignment->title}}</a>
+					</td>
+					<td>
+						{{$assignment->status_code}}
+					</td>	
+					<td>
+						{{$assignment->score}}
+					</td>
+					<td>
+						{{date_format(new DateTime($due_date), 'm/d/Y')}}
+					</td>
+				</tr>
+				@endforeach
+			</table>
 
-			@endforeach
 		</div>
 	</div>
 

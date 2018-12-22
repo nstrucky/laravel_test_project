@@ -1,0 +1,14 @@
+
+
+#assignments tr:hover {
+	background-color: #c7ffc6;
+}
+
+#assignments th {
+	text-align: left;
+}
+
+.past-due {
+	background-color: #ff7c7c;
+}
+
