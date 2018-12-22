@@ -24,10 +24,13 @@
 			
 			<form method="GET" action="/assignments/create">
 				<input type="hidden" name="student_id" value="{{ $id }}">
-				<button type="submit" class="button is-dark">New Assignment</button>
+				<button type="submit" class="button">New Assignment</button>
 			</form>
 			{{-- <a href="/assignments/create" class="button is-dark">New Assignment</a> --}}
 		</div>
+
+		<div class="box">
+			
 
 			@foreach($assignments as $assignment)
 
@@ -49,7 +52,7 @@
 				</div>
 
 			@endforeach
-
+		</div>
 	</div>
 
 	<form method="GET" action="/students/{{$id}}/edit">

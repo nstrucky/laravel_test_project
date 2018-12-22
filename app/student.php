@@ -13,4 +13,10 @@ class Student extends Model
     public function assignments() {
     	return $this->hasMany(Assignment::class);
     }
+
+
+    public function addAssignment($validAttrs) {
+
+    	$this->assignments()->create($validAttrs);
+    }
 }

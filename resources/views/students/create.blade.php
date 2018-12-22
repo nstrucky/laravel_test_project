@@ -20,16 +20,7 @@
 			<input type=number" class="input{{ $errors->has('age') ? ' is-danger' : '' }}" name="age" value="{{old('age')}}" required>
 		</div>
 
-		@if ($errors->any())
-			<div class="notification is-danger">
-				<ul>
-					@foreach($errors->all() as $error)
-						<li>{{$error}}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
-
+		@include('utils.errors')
 		<div>
 			<button class="button" type="submit">Save Student</button>
 		</div>

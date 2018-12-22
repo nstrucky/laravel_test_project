@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Student;
 
 class AssignmentsController extends Controller
 {
@@ -48,6 +49,26 @@ class AssignmentsController extends Controller
 
         \App\Assignment::create($validAttrs);
         return redirect('/students/'.request()->student_id);
+    }
+
+
+    /**
+     *   This method really shows how route-model binding works.  
+     *   The student ID is passed to the route /students/{student}/assignments
+     *   and laravel automatically knows which student instance to create based
+     *   on the ID number
+     */
+    public function storeAssignment(Student $student) {
+        $validAttrs = request()->validate([
+            'student_id' => 'required|numeric',
+            'description' => 'required|min:2|max:255',
+            'complete' => 'required',
+            'status_code' => 'required',
+            'due_date' => 'required|date|after_or_equal:today',
+            'score' => 'required'
+        ]);
+        $student->addAssignment($validAttrs);
+        return redirect('/students/'.$student->id);
     }
 
     /**

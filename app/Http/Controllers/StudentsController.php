@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Student;
 
 class StudentsController extends Controller
 {
@@ -13,7 +14,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = \App\Student::all();
+        $students = Student::all();
         return view('students.index', ['students' => $students]);
     }
 
@@ -53,7 +54,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\Student $student/*$id*/)
+    public function show(Student $student/*$id*/)
     {
         $assignments = $student->assignments;
 
@@ -70,7 +71,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\Student $student/*$id*/)
+    public function edit(Student $student/*$id*/)
     {
         // $student = \App\student::findOrFail($id);
         return view('students.edit', ['student' => $student]);
@@ -83,7 +84,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\Student $student)
+    public function update(Student $student)
     {
         // $student = \App\student::find($id);
         // $student->first_name = request('first_name');
@@ -110,7 +111,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\Student $student/*$id*/)
+    public function destroy(Student $student/*$id*/)
     {
         $student->delete();
         // \App\student::findOrFail($id)->delete();

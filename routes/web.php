@@ -24,6 +24,9 @@ Route::get('/contacts', 'PagesController@contacts');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('assignments', 'AssignmentsController');
+Route::post('/students/{student}/assignments', 'AssignmentsController@storeAssignment');
+
+
 Route::resource('students','StudentsController');
 // Route::get('/students', 'StudentsController@index');
 // Route::post('/students', 'StudentsController@store');
