@@ -13,6 +13,7 @@
 @section('content')
 
 	<link rel="stylesheet" type="text/css" href="/css/tables.css">
+	<script type="text/javascript" src="/js/my_functions.js"></script>
 
 	<h1 class="title is-3">{{$name}}</h1>
 
@@ -28,14 +29,34 @@
 		</div>
 
 		<div class="box">
-			
-			<table class="table is-narrow is-fullwidth" id="assignments">
 
-				<th>Complete</th>
-				<th>Assignment</th>
-				<th>Status</th>
-				<th>Score</th>
-				<th>Due Date</th>
+			<div>
+				<select id="searchOption">
+					<option value="1">Assignment Name</option>
+					<option value="3">Score</option>
+				</select>
+			</div>
+			<div>
+				<input class="input" type="text" name="searchbox" id="searchbox" placeholder="Enter Search Criteria" 
+				onkeyup="searchTableData('searchOption', 'assignments', 'searchbox')">
+			</div>
+
+			<div style="overflow-x: auto;">
+			<table class="table fixed_header is-bordered" id="assignments" >
+				<thead>
+					<tr>
+						<th>Complete</th>
+						<th>Assignment</th>
+						<th>Status</th>
+						<th>Score</th>
+						<th>Due Date</th>
+
+					</tr>				
+				</thead>
+				
+				<tbody>
+						
+
 
 				@foreach($assignments as $assignment)
 
@@ -58,8 +79,7 @@
 						</form>
 					</td>
 					<td>
-						<a class="{{$checkcheck ? 'completed' : ''}}" href="/assignments/{{$assignment->id}}">{{$assignment->title}}</a>
-					</td>
+						<a class="{{$checkcheck ? 'completed' : ''}}" href="/assignments/{{$assignment->id}}">{{$assignment->title}}</a> 					</td>
 					<td>
 						{{$assignment->status_code}}
 					</td>	
@@ -67,11 +87,15 @@
 						{{$assignment->score}}
 					</td>
 					<td>
-						{{date_format(new DateTime($due_date), 'm/d/Y')}}
+						{{date_format(new  DateTime($due_date), 'm/d/Y')}}
 					</td>
 				</tr>
 				@endforeach
+				</tbody>
+			
 			</table>
+			</div>
+
 
 		</div>
 	</div>
@@ -84,3 +108,5 @@
 
 
 @endsection
+
+
